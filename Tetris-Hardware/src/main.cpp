@@ -8,7 +8,6 @@
 CRGB leds[NUM_LEDS];
 
 
-
 void downAll();
 void setup() { 
       // Uncomment/edit one of the following lines for your leds arrangement.
