@@ -1,13 +1,11 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
-#define NUM_LEDS 16
-#define DATA_PIN 13
-#define CLOCK_PIN 11
+#define NUM_LEDS 160
+#define DATA_PIN 10
+#define CLOCK_PIN 9
 
 CRGB leds[NUM_LEDS];
-
-
 
 void downAll();
 void setup() { 
@@ -31,12 +29,15 @@ void loop() {
     for(int dot = 0; dot < NUM_LEDS; dot++)
     {
       downAll();
-      // leds[dot].red=52;
-      // leds[dot].green=153;
-      // leds[dot].blue=3;
-      leds[dot]=CRGB::Green;
+      //leds[dot].red=127;
+      //leds[dot].green=127;
+      //leds[dot].blue=127;
+      leds[dot]=CRGB::Red;
+      leds[dot+1]=CRGB::Red;
+      leds[dot+15]=CRGB::Red;
+      leds[dot+16]=CRGB::Red;
       FastLED.show();
-      delay(1000);
+      delay(50);
     }
 }
 void downAll(){
