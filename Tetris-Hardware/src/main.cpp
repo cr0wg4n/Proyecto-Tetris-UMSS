@@ -6,41 +6,53 @@
 #define CLOCK_PIN 9
 
 CRGB leds[NUM_LEDS];
+const char *strip="bbkkkkkkkkkkkkkkkkkkkkkkkkkkkkbbkkkkkkkkkkkkkkkkkkkkkkkkkkkkkggggkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkrkkkkkkkkrrkkkkkkkkkkkkkkkkkkkkkrkkkkkkkkkkkkkkkkkkkk";
 
 void downAll();
-void setup() { 
-      // Uncomment/edit one of the following lines for your leds arrangement.
-      // FastLED.addLeds<TM1803, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<TM1804, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<TM1809, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<NEOPIXEL, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<UCS1903, DATA_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<SM16716, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<LPD8806, RGB>(leds, NUM_LEDS);
-      FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<SM16716, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-      // FastLED.addLeds<LPD8806, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
-      //FastLED.addLeds<WS2801, RGB>(leds, NUM_LEDS); //we're using WS2801
+
+void setup() 
+{ 
+  Serial.begin(9600);
+  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 }
-void loop() { 
-    for(int dot = 0; dot < NUM_LEDS; dot++)
+void loop()
+{ 
+  downAll();
+  for (int i = 0; i < strlen(strip); i++)
+  {
+    switch (strip[i])
     {
-      downAll();
-      //leds[dot].red=127;
-      //leds[dot].green=127;
-      //leds[dot].blue=127;
-      leds[dot]=CRGB::Red;
-      leds[dot+1]=CRGB::Red;
-      leds[dot+15]=CRGB::Red;
-      leds[dot+16]=CRGB::Red;
-      FastLED.show();
-      delay(50);
+    case 'r':
+      leds[i]=CRGB::Red;
+      break;
+    case 'g':
+      leds[i]=CRGB::Green;
+      break;
+    case 'b':
+      leds[i]=CRGB::Blue;
+      break; 
+    case 'k':
+      leds[i]=CRGB::Black;
+    default:
+      leds[i]=CRGB::Black;
+      break;
     }
+  }
+  FastLED.show();
+  delay(100);
+  
+    // for(int dot = 0; dot < NUM_LEDS; dot++)
+    // {
+    //   downAll();
+    //   //leds[dot].red=127;
+    //   //leds[dot].green=127;
+    //   //leds[dot].blue=127;
+    //   leds[dot]=CRGB::Red;
+    //   FastLED.show();
+    // }
 }
-void downAll(){
+void downAll() 
+{
   for(int dot = 0; dot < NUM_LEDS; dot++)
   {
     leds[dot] = CRGB::Black;

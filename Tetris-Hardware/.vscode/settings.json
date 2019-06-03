@@ -4,7 +4,7 @@
         "PLATFORMIO_CALLER": "vscode"
     },
     "terminal.integrated.env.linux": {
-        "PATH": "/home/cr0wg4n/.platformio/penv/bin:/home/cr0wg4n/.platformio/penv:/home/cr0wg4n/.cargo/bin:/home/cr0wg4n/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
+        "PATH": "/home/cr0wg4n/.platformio/penv/bin:/home/cr0wg4n/.platformio/penv:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games",
         "PLATFORMIO_CALLER": "vscode"
     }
 }
