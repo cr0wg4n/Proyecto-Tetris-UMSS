@@ -7,7 +7,7 @@
 const char* ssid = "COMTECO-95193887";
 const char* password = "f4m1l14C0ND322";
 WiFiServer server(80);
-#define NUM_LEDS 10
+#define NUM_LEDS 160
 #define DATA_PIN 13 //D7 - MOSI
 #define CLOCK_PIN 14 //D5 - CK
 
