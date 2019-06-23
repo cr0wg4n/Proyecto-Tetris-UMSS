@@ -10,9 +10,8 @@ app.use(bodyParser.urlencoded({
 var keyState ={
     'right':0,
     'left':0,
-    'up':0,
-    'down':0,
-    'move':0 
+    'move':0,
+    'down':0
 }
 
 app.get('/', function (req, res) {
@@ -21,7 +20,6 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
    keyState.down= req.body.down;
    keyState.left= req.body.left;
-   keyState.up= req.body.up;
    keyState.right= req.body.right;
    keyState.move= req.body.move;
    res.json(keyState);
@@ -30,6 +28,5 @@ app.post('/', function (req, res) {
 var server = app.listen(3000, function () {
    var host = server.address().address
    var port = server.address().port
-   
    console.log("Example app listening at http://%s:%s", host, port)
 })
