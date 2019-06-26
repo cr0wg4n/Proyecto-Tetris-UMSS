@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ControlService } from '../services/control.service';
 
 @Component({
   selector: 'app-control',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlComponent implements OnInit {
 
-  constructor() { }
+  constructor(private control: ControlService) { }
 
   ngOnInit() {
+      this.control.getStatus().subscribe(
+        (res)=>{
+          console.log(res);
+        }
+      );
   }
 
 }
