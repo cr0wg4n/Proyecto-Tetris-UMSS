@@ -152,7 +152,9 @@ class TetrisApp(object):
 			self.screen.blit(msg_image, (
 			  self.width // 2-msgim_center_x,
 			  self.height // 2-msgim_center_y+i*22))
-
+	def sendMatrix(self,matrix,stone,x,y):
+		for i in range(config['rows']):
+			print(matrix[i])
 	def draw_matrix(self, matrix, offset):
 		off_x, off_y  = offset
 		for y, row in enumerate(matrix):
@@ -269,6 +271,7 @@ Press space to continue""")
 					self.draw_matrix(self.stone,
 					                 (self.stone_x,
 					                  self.stone_y))
+					self.sendMatrix(self.board,self.stone,self.stone_x,self.stone_y)
 			pygame.display.update()
 
 			for event in pygame.event.get():
