@@ -3,4 +3,6 @@ export interface ControlModel {
     left: number;
     move: number;
     down: number;
+    play?: number;
+    reboot?: number;
 }

@@ -22,7 +22,9 @@ export class ControlComponent implements OnInit {
       left: 0,
       right: 0,
       move: 0,
-      down: 0
+      down: 0,
+      play: 1,
+      reboot: 0
     };
     this.sendKeys();
   }
@@ -31,7 +33,9 @@ export class ControlComponent implements OnInit {
       left: 0,
       right: 0,
       move: 0,
-      down: 0
+      down: 0,
+      play: 0,
+      reboot: 1
     };
     this.sendKeys();
   }
@@ -40,7 +44,9 @@ export class ControlComponent implements OnInit {
       left: 1,
       right: 0,
       move: 0,
-      down: 0
+      down: 0,
+      play: 0,
+      reboot: 0
     };
     this.sendKeys();
   }
@@ -49,7 +55,9 @@ export class ControlComponent implements OnInit {
       left: 0,
       right: 1,
       move: 0,
-      down: 0
+      down: 0,
+      play: 0,
+      reboot: 0
     };
     this.sendKeys();
   }
@@ -58,7 +66,9 @@ export class ControlComponent implements OnInit {
       left: 0,
       right: 0,
       move: 0,
-      down: 1
+      down: 1,
+      play: 0,
+      reboot: 0
     };
     this.sendKeys();
   }
@@ -67,7 +77,9 @@ export class ControlComponent implements OnInit {
       left: 0,
       right: 0,
       move: 1,
-      down: 0
+      down: 0,
+      play: 0,
+      reboot: 0
     };
     this.sendKeys();
   }

@@ -13,17 +13,21 @@ var keyState ={
     'right':0,
     'left':0,
     'move':0,
-    'down':0
+    'down':0,
+    'play':0,
+    'reboot':0
 }
 
 app.get('/', function (req, res) {
    res.json(keyState);
 })
 app.post('/', function (req, res) {
-   keyState.down= req.body.down;
-   keyState.left= req.body.left;
-   keyState.right= req.body.right;
-   keyState.move= req.body.move;
+   keyState.down = req.body.down;
+   keyState.left = req.body.left;
+   keyState.right = req.body.right;
+   keyState.move = req.body.move;
+   keyState.play = req.body.play;
+   keyState.reboot = req.body.reboot;
    res.json(keyState);
 })
 
