@@ -17,9 +17,19 @@ var keyState ={
     'play':0,
     'reboot':0
 }
-
+function reboot(){
+    return {
+      'right':0,
+      'left':0,
+      'move':0,
+      'down':0,
+      'play':0,
+      'reboot':0
+  }
+}
 app.get('/', function (req, res) {
    res.json(keyState);
+   keyState = reboot();
 })
 app.post('/', function (req, res) {
    keyState.down = req.body.down;
