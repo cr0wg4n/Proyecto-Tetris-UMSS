@@ -36,7 +36,7 @@ import requests
 from random import randrange as rand
 
 urlServer = 'http://localhost:3000/'
-nodeIP = 'http://192.168.1.3/'
+nodeIP = 'http://192.168.0.102/'
 #urlServer = 'http://chameleoncodesoft.com:3000/'
 # The configuration
 config = {
