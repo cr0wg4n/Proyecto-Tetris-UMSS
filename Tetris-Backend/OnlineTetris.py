@@ -35,7 +35,9 @@ import sys, pygame
 import requests
 from random import randrange as rand
 
-urlServer = 'http://localhost:3000/' 
+urlServer = 'http://localhost:3000/'
+nodeIP = 'http://192.168.1.3/'
+#urlServer = 'http://chameleoncodesoft.com:3000/'
 # The configuration
 config = {
 	'cell_size':	40,
@@ -46,14 +48,14 @@ config = {
 }
 
 colors = [
-(0,   0,   0  ),
-(255, 0,   0  ),
-(0,   150, 0  ),
-(0,   0,   255),
-(255, 120, 0  ),
-(255, 255, 0  ),
-(180, 0,   255),
-(0,   220, 220)
+(0,   0,   0  ), # Black
+(255, 0,   0  ), # Red
+(0,   255, 0  ), # Green
+(0,   0,   255), # Blue
+(255, 120, 0  ), # Orange
+(255, 255, 0  ), # Yellow
+(180, 0,   255), # Purple
+(0,   220, 220)  # Sky
 ]
 
 # Define the shapes of the single parts
@@ -153,7 +155,29 @@ class TetrisApp(object):
 			  self.width // 2-msgim_center_x,
 			  self.height // 2-msgim_center_y+i*22))
 	def setColors(self,color):
-		
+		if color == 0:
+			return 'k'
+		elif color == 1:
+			return 'r'            
+		elif color == 2:
+			return 'g'      
+		elif color == 3:
+			return 'b'
+		elif color == 4:
+			return 'o'
+		elif color == 5:
+			return 'y'
+		elif color == 6:
+			return 'p'    
+		elif color == 7:
+			return 's'
+
+	def sendColorsString(self,stringColor):
+		try:
+			requests.get(nodeIP+stringColor)
+		except:
+			print('done!')
+
 	def serializeMatrix(self,matrix):
 		w = 10
 		h = 16
@@ -170,11 +194,14 @@ class TetrisApp(object):
 				j = j-1
 			invertFlag = not invertFlag
 			i = i-1
-		print(strip)
+		stripString = ''
+		for item in strip:
+			stripString = stripString+self.setColors(item)
+		self.sendColorsString(stripString)
+
 	def sendMatrix(self,matrix,stone,x,y):
-		#for i in range(config['rows']):
-			#print(matrix[i])
 		self.serializeMatrix(matrix)
+
 	def draw_matrix(self, matrix, offset):
 		off_x, off_y  = offset
 		for y, row in enumerate(matrix):
@@ -255,11 +282,11 @@ class TetrisApp(object):
 		}
 		if data['right'] == 1:
 			key_actions['RIGHT']()
-		if data['left'] == 1:
+		elif data['left'] == 1:
 			key_actions['LEFT']()
-		if data['down'] == 1:
+		elif data['down'] == 1:
 			key_actions['DOWN']()
-		if data['move'] == 1:
+		elif data['move'] == 1:
 			key_actions['UP']()
 
 	def run(self):

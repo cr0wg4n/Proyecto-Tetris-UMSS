@@ -59,6 +59,19 @@ void loop() {
       break; 
     case 'k':
       leds[i]=CRGB::Black;
+      break; 
+    case 'o':
+      leds[i]=CRGB::Orange;
+      break; 
+    case 'y':
+      leds[i]=CRGB::Yellow;
+      break; 
+    case 'p':
+      leds[i]=CRGB::Purple;
+      break; 
+    case 's':
+      leds[i]=CRGB::SkyBlue;
+      break; 
     default:
       leds[i]=CRGB::Black;
       break;

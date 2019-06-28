@@ -38,7 +38,7 @@ app.post('/', function (req, res) {
    keyState.move = req.body.move;
    keyState.play = req.body.play;
    keyState.reboot = req.body.reboot;
-   res.json(keyState);
+   res.json('done');
 })
 
 var server = app.listen(3000, function () {
