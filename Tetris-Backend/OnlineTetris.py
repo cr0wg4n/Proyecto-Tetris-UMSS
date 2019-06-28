@@ -152,9 +152,29 @@ class TetrisApp(object):
 			self.screen.blit(msg_image, (
 			  self.width // 2-msgim_center_x,
 			  self.height // 2-msgim_center_y+i*22))
+	def setColors(self,color):
+		
+	def serializeMatrix(self,matrix):
+		w = 10
+		h = 16
+		invertFlag = False
+		strip = []
+		i = w-1
+		while i>=0:
+			j = h-1
+			while j>=0:
+				if invertFlag == False:
+					strip.append(matrix[j][i])
+				else:
+					strip.append(matrix[h-1-j][i])
+				j = j-1
+			invertFlag = not invertFlag
+			i = i-1
+		print(strip)
 	def sendMatrix(self,matrix,stone,x,y):
-		for i in range(config['rows']):
-			print(matrix[i])
+		#for i in range(config['rows']):
+			#print(matrix[i])
+		self.serializeMatrix(matrix)
 	def draw_matrix(self, matrix, offset):
 		off_x, off_y  = offset
 		for y, row in enumerate(matrix):
