@@ -8,7 +8,7 @@ import { ControlModel } from '../models/control.model';
   providedIn: 'root'
 })
 export class ControlService {
-  url = environment.urlLocal;
+  url = environment.urlServer;
   constructor(private http: HttpClient) { }
   getStatus(): Observable<ControlModel[]> {
     return this.http.get<ControlModel[]>(this.url);
