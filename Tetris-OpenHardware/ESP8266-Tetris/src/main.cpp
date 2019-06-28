@@ -4,8 +4,8 @@
 #include "main.h"
 #include <ESP8266WiFi.h>
 
-const char* ssid = "COMTECO-95193887";
-const char* password = "f4m1l14C0ND322";
+const char* ssid = "crawlers-tetris";
+const char* password = "crawlers2019";
 WiFiServer server(80);
 #define NUM_LEDS 160
 #define DATA_PIN 13 //D7 - MOSI
@@ -16,7 +16,7 @@ CRGB leds[NUM_LEDS];
 void setup() {
   Serial.begin(115200);
   delay(10);
-  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS);
   Serial.println("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
