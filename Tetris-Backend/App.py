@@ -1,29 +1,23 @@
-from RTetris import Tetris
+import time
+from GTetris import TetrisApp
 
-config = {
-    'scale':    1,
-    'cols':     10,
-    'rows':     16,
-}
+App = TetrisApp()
 
-p1 = Tetris(config["rows"], config["cols"],config["scale"])
-
-print(p1.drawMatrix()) 
-print("Next")
-p1.newShape()
-p1.play("DOWN")
-print(p1.drawMatrix())
-print("Next")
-p1.play("DOWN")
-print(p1.drawMatrix())
-
-
-
-
-
-
-
-
-
-
-
+FPS = 1
+last_time = time.time()
+height = 16
+width = 10
+while True:
+    lista = App.run("DOWN")
+    matrix = []
+    counter = 0
+    for cy, row in enumerate(lista):
+        if counter < 16:
+            matrix.append(row)
+        counter = counter + 1
+    print(matrix)
+    new_time = time.time()
+    sleep_time = ((1000.0 / FPS) - (new_time - last_time)) / 1000.0
+    if sleep_time > 0:
+        time.sleep(sleep_time)
+    last_time = new_time
