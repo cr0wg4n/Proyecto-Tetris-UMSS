@@ -1,42 +1,12 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-# Very simple tetris implementation
-# 
-# Control keys:
-# Down - Drop stone faster
-# Left/Right - Move stone
-# Up - Rotate Stone clockwise
-# Escape - Quit game
-# P - Pause game
-#
-# Have fun!
-
-# Copyright (c) 2010 "Kevin Chabowski"<kevin@kch42.de>
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
 import sys, pygame
 import requests
 from random import randrange as rand
 
 urlServer = 'http://localhost:3000/'
-nodeIP = 'http://192.168.0.102/'
+nodeIP = 'http://192.168.0.100/'
 #urlServer = 'http://chameleoncodesoft.com:3000/'
 # The configuration
 config = {
@@ -197,7 +167,7 @@ class TetrisApp(object):
 		stripString = ''
 		for item in strip:
 			stripString = stripString+self.setColors(item)
-		self.sendColorsString(stripString)
+		#self.sendColorsString(stripString)
 
 	def sendMatrix(self,matrix,stone,x,y):
 		self.serializeMatrix(matrix)
