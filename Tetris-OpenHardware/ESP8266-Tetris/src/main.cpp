@@ -6,6 +6,8 @@
 
 const char* ssid = "crawlers-tetris";
 const char* password = "crawlers2019";
+//const char* ssid = "CeInf";
+//const char* password = "105punto7FM";
 WiFiServer server(80);
 #define NUM_LEDS 160
 #define DATA_PIN 13 //D7 - MOSI

@@ -167,10 +167,16 @@ class TetrisApp(object):
 		stripString = ''
 		for item in strip:
 			stripString = stripString+self.setColors(item)
-		#self.sendColorsString(stripString)
+		self.sendColorsString(stripString)
 
-	def sendMatrix(self,matrix,stone,x,y):
-		self.serializeMatrix(matrix)
+	def sendMatrix(self,matrix):
+		newMatrix = []
+		counter = 0
+		for cy, row in enumerate(matrix):
+			if counter < config['rows']:
+				newMatrix.append(row)
+			counter = counter + 1
+		self.serializeMatrix(newMatrix)
 
 	def draw_matrix(self, matrix, offset):
 		off_x, off_y  = offset
@@ -258,6 +264,18 @@ class TetrisApp(object):
 			key_actions['DOWN']()
 		elif data['move'] == 1:
 			key_actions['UP']()
+	
+	def unirMatrices(self, matrix, figura, posX, posY):        
+		respuesta = [ [ 0 for x in range(config['cols']) ]
+				for y in range(config['rows']) ]
+		respuesta += [[ 1 for x in range(config['cols'])]]
+		for cy, row in enumerate(matrix):
+			for cx, val in enumerate(row):
+				respuesta[cy][cx] = matrix[cy][cx]
+		for cy, row in enumerate(figura):
+			for cx, val in enumerate(row):
+				respuesta[cy+posY-1 ][cx+posX] += val 
+		return respuesta
 
 	def run(self):
 		key_actions = {
@@ -288,7 +306,8 @@ Press space to continue""")
 					self.draw_matrix(self.stone,
 					                 (self.stone_x,
 					                  self.stone_y))
-					self.sendMatrix(self.board,self.stone,self.stone_x,self.stone_y)
+					matrixUnida = self.unirMatrices(self.board, self.stone, self.stone_x, self.stone_y)
+					self.sendMatrix(matrixUnida)
 			pygame.display.update()
 
 			for event in pygame.event.get():
