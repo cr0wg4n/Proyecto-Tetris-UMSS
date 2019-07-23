@@ -6,6 +6,8 @@
 
 const char* ssid = "crawlers-tetris";
 const char* password = "crawlers2019";
+//const char* ssid = "CeInf";
+//const char* password = "105punto7FM";
 WiFiServer server(80);
 #define NUM_LEDS 160
 #define DATA_PIN 13 //D7 - MOSI
@@ -16,7 +18,7 @@ CRGB leds[NUM_LEDS];
 void setup() {
   Serial.begin(115200);
   delay(10);
-  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS);
+  FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RBG>(leds, NUM_LEDS);
   Serial.println("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
@@ -30,6 +32,8 @@ void setup() {
   Serial.print("http://");
   Serial.print(WiFi.localIP());
   Serial.println("/");
+  downAll();
+  delay(1);
 }
 void loop() {
   WiFiClient client = server.available();

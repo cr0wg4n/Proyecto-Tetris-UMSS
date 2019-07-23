@@ -12,12 +12,12 @@ export class ControlComponent implements OnInit {
   constructor(private control: ControlService) { }
   ngOnInit() {
       this.control.getStatus().subscribe(
-        (res)=>{
+        (res) => {
           console.log(res);
         }
       );
   }
-  play() {
+  play():any {
     this.model = {
       left: 0,
       right: 0,
