@@ -144,9 +144,12 @@ class TetrisApp(object):
 
 	def sendColorsString(self,stringColor):
 		try:
-			requests.get(nodeIP+stringColor)
-		except:
-			print('done!')
+			if(len(stringColor)==160):
+				requests.get(nodeIP+stringColor)
+			else:
+				print('string extra!')
+		except Exception as error:
+			print(error)
 
 	def serializeMatrix(self,matrix):
 		w = 10

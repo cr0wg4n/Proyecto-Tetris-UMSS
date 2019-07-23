@@ -44,6 +44,10 @@ void loop() {
     delay(1);
   }
   String request = client.readStringUntil('\r');
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-type:text/html");
+  client.println("Connection: close");
+  client.println();
   client.flush();
   downAll();
   String strips = request.substring(5,NUM_LEDS+6);
