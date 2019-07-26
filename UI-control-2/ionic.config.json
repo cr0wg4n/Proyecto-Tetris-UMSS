@@ -1,5 +1,7 @@
 {
   "name": "UI-control-2",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

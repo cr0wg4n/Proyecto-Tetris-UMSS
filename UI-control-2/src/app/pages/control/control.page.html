@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start" (click)="navCtrl.pop()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Control de tetris</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" id="body-control">
+  
+  <div class="container-fluid table-responsive">
+    <div class="d-flex justify-content-center bd-highlight mb-3">
+        <div class="">
+          <button class="button text-primary mx-4" (click)="reboot()" title="Reiniciar"><i class="fa fa-history"></i></button>
+        </div>
+      <div class="">
+        <button class="button text-primary mx-4" (click)="play()" title="Iniciar/Pausar" style="border-radius: 20%  ;"><i class="fa fa-play-circle-o"></i>/<i class="fa fa-pause-circle-o"></i></button>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between bd-highlight mb-3">
+      <div class="">
+        <button class="button text-primary" (click)="left()" title="Mover izquierda"><i class="fa fa-chevron-left"></i></button>
+      </div>
+      <div class="">
+        <button class="button text-primary" (click)="accel()" title="Acelerar caída" style="margin-top: 40%;"><i class="fa fa-chevron-down"></i></button>
+      </div>
+      <div class="">
+        <button class="button text-primary" (click)="rotate()" title="Rotar" style="margin-top: 40%;"><i class="fa fa-refresh"></i></button>
+      </div>
+      <div class="">
+        <button class="button text-primary" (click)="right()" title="Mover derecha"><i class="fa fa-chevron-right"></i></button>
+      </div>
+    </div>
+    
+  </div>
+
+</ion-content>
