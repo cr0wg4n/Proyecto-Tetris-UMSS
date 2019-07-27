@@ -1,42 +1,12 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-# Very simple tetris implementation
-# 
-# Control keys:
-# Down - Drop stone faster
-# Left/Right - Move stone
-# Up - Rotate Stone clockwise
-# Escape - Quit game
-# P - Pause game
-#
-# Have fun!
-
-# Copyright (c) 2010 "Kevin Chabowski"<kevin@kch42.de>
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
 import sys, pygame
 import requests
 from random import randrange as rand
 
 urlServer = 'http://localhost:3000/'
-nodeIP = 'http://192.168.1.3/'
+nodeIP = 'http://192.168.0.100/'
 #urlServer = 'http://chameleoncodesoft.com:3000/'
 # The configuration
 config = {
@@ -199,8 +169,14 @@ class TetrisApp(object):
 			stripString = stripString+self.setColors(item)
 		self.sendColorsString(stripString)
 
-	def sendMatrix(self,matrix,stone,x,y):
-		self.serializeMatrix(matrix)
+	def sendMatrix(self,matrix):
+		newMatrix = []
+		counter = 0
+		for cy, row in enumerate(matrix):
+			if counter < config['rows']:
+				newMatrix.append(row)
+			counter = counter + 1
+		self.serializeMatrix(newMatrix)
 
 	def draw_matrix(self, matrix, offset):
 		off_x, off_y  = offset
@@ -288,6 +264,18 @@ class TetrisApp(object):
 			key_actions['DOWN']()
 		elif data['move'] == 1:
 			key_actions['UP']()
+	
+	def unirMatrices(self, matrix, figura, posX, posY):        
+		respuesta = [ [ 0 for x in range(config['cols']) ]
+				for y in range(config['rows']) ]
+		respuesta += [[ 1 for x in range(config['cols'])]]
+		for cy, row in enumerate(matrix):
+			for cx, val in enumerate(row):
+				respuesta[cy][cx] = matrix[cy][cx]
+		for cy, row in enumerate(figura):
+			for cx, val in enumerate(row):
+				respuesta[cy+posY-1 ][cx+posX] += val 
+		return respuesta
 
 	def run(self):
 		key_actions = {
@@ -318,7 +306,8 @@ Press space to continue""")
 					self.draw_matrix(self.stone,
 					                 (self.stone_x,
 					                  self.stone_y))
-					self.sendMatrix(self.board,self.stone,self.stone_x,self.stone_y)
+					matrixUnida = self.unirMatrices(self.board, self.stone, self.stone_x, self.stone_y)
+					self.sendMatrix(matrixUnida)
 			pygame.display.update()
 
 			for event in pygame.event.get():
