@@ -34,7 +34,6 @@ export class DrawPage implements OnInit {
   }
 
   async selectColor(ev: any, i, j) {
-    console.log(i + ' - ', j);
     const popover = await this.popoverCtrl.create({
       component: SelectColorComponent,
       event: ev,
@@ -44,7 +43,32 @@ export class DrawPage implements OnInit {
         'j': j
       }
     });
-    return await popover.present();
+
+    popover.present();
+
+    const { data } = await popover.onWillDismiss();
+    if(data){
+      this.draw_matrix[data.i][data.j] = data.color;
+    }
+  }
+
+  getColor(i, j) {
+    let res:string = '';
+    switch(this.draw_matrix[i][j]) {
+      case 'k':
+        res = 'dark';
+        break;
+      case 'r':
+        res = 'danger';
+        break;
+      case 'g':
+        res = 'success';
+        break;
+      case 'b':
+        res = 'primary';
+        break;
+    }
+    return res;
   }
 
 }

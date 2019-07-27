@@ -8,19 +8,23 @@ import { PopoverController, NavParams } from '@ionic/angular';
 })
 export class SelectColorComponent implements OnInit {
 
-  nombre:string = "";
-  edad:number = 0;
+  i:string = "";
+  j:string = "";
+  color = "";
 
   constructor( public popoverCtrl:PopoverController, private navParams:NavParams ) { }
 
   ngOnInit() {
-    this.nombre = this.navParams.get('i');
-    this.edad = this.navParams.get('j');
-    console.log(this.nombre + ' - ' + this.edad);
+    this.i = this.navParams.get('i');
+    this.j = this.navParams.get('j');
   }
 
-  setColor() {
-    this.popoverCtrl.dismiss();
+  setColor(color) {
+    this.popoverCtrl.dismiss({
+      'i': this.i,
+      'j': this.j,
+      'color': color
+    });
   }
 
 }
