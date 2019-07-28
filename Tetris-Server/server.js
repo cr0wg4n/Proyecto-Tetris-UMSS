@@ -39,7 +39,15 @@ app.post('/', function (req, res) {
    keyState.play = req.body.play;
    keyState.reboot = req.body.reboot;
    res.json('done');
-   console.log('yes');
+
+   console.log('OK');
+})
+
+app.post('/draw', function (req, res) {
+   
+   res.json('done');
+
+   console.log(req.body);
 })
 
 var server = app.listen(3000, function () {
