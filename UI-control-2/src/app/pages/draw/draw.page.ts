@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
 import { SelectColorComponent } from '../../components/select-color/select-color.component';
 
+import { DrawService } from '../../services/draw.service';
+import { MatrixInterface   } from '../../interfaces/matrix.interface';
+
 @Component({
   selector: 'app-draw',
   templateUrl: './draw.page.html',
@@ -28,7 +31,9 @@ export class DrawPage implements OnInit {
     ['k','k','k','k','k','g','g','k','b','b']
 ];
 
-  constructor(private navCtrl:NavController, public popoverCtrl:PopoverController) { }
+matrix:MatrixInterface;
+
+  constructor(private navCtrl:NavController, public popoverCtrl:PopoverController, private draw:DrawService) { }
 
   ngOnInit() {
   }
@@ -69,6 +74,14 @@ export class DrawPage implements OnInit {
         break;
     }
     return res;
+  }
+
+  sendKeys() {
+    this.draw.setStatus(this.draw_matrix).subscribe(
+      (res) => {
+        console.log(res);
+      }
+    );
   }
 
 }

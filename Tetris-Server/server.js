@@ -43,6 +43,13 @@ app.post('/', function (req, res) {
    console.log('OK');
 })
 
+app.post('/draw', function (req, res) {
+   
+   res.json('done');
+
+   console.log(req.body);
+})
+
 var server = app.listen(3000, function () {
    var host = server.address().address
    var port = server.address().port
