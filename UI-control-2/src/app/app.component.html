@@ -1,0 +1,26 @@
+<ion-app>
+  <ion-menu side="start" menuId="menu">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item [routerLink]="['/control']" (click)="menu.toggle()">
+          <ion-icon name="logo-game-controller-b" slot="start"></ion-icon>
+          <ion-label>Control de tetris</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/draw']" (click)="menu.toggle()">
+          <ion-icon name="create" slot="start"></ion-icon>
+          <ion-label>Dibujo en pantalla</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

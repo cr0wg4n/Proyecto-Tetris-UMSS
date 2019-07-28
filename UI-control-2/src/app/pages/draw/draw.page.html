@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start" (click)="navCtrl.pop()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dibuja en la Pantalla</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="gg" class="ion-padding">
+
+  <table class="table table-responsive d-flex justify-content-center">
+    <tbody class="">
+      <tr *ngFor="let row of draw_matrix; let i=index">
+        <td *ngFor="let col of row; let j=index" class="p-0">
+          <a button (click)="selectColor(event, i, j)">
+            <ion-icon [color]="getColor(i, j)" name="flashlight" style="font-size: 30px; margin: -2.2px 0px;"></ion-icon>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ion-button color="warning" expand="block" (click)="sendKeys()">
+    Imprimir Dibujo
+  </ion-button>
+
+</ion-content>
