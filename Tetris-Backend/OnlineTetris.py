@@ -267,6 +267,8 @@ class TetrisApp(object):
 			key_actions['DOWN']()
 		elif data['move'] == 1:
 			key_actions['UP']()
+		elif data['play'] == 1:
+			key_actions['p']()
 	
 	def unirMatrices(self, matrix, figura, posX, posY):        
 		respuesta = [ [ 0 for x in range(config['cols']) ]
