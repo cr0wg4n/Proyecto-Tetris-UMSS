@@ -1,0 +1,28 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# level-converter-digitalConverter
+#
+DEF level-converter-digitalConverter U 0 40 Y Y 1 F N
+F0 "U" 0 -650 50 H V C CNN
+F1 "level-converter-digitalConverter" -50 200 50 H V C CNN
+F2 "" 0 -650 50 H I C CNN
+F3 "" 0 -650 50 H I C CNN
+DRAW
+S -300 100 300 -500 0 1 0 N
+X GND ~ -400 -250 100 R 50 50 1 1 w
+X GND ~ 400 -250 100 L 50 50 1 1 w
+X HV ~ 400 -150 100 L 50 50 1 1 W
+X LV ~ -400 -150 100 R 50 50 1 1 W
+X RxI_1 ~ 400 -50 100 L 50 50 1 1 B
+X RxI_2 ~ 400 -350 100 L 50 50 1 1 B
+X RxO_1 ~ -400 -50 100 R 50 50 1 1 B
+X RxO_2 ~ -400 -350 100 R 50 50 1 1 B
+X TxI_1 ~ -400 50 100 R 50 50 1 1 B
+X TxI_2 ~ -400 -450 100 R 50 50 1 1 B
+X TxO_1 ~ 400 50 100 L 50 50 1 1 B
+X TxO_2 ~ 400 -450 100 L 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
+#End Library

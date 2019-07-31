@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name nodemcu)(type Legacy)(uri /home/cr0wg4n/Electronica/Circuits/Tetris-PCB/tetris-pcb/nodemcu.lib)(options "")(descr ""))
+  (lib (name digitalConverter)(type Legacy)(uri /home/cr0wg4n/Electronica/Circuits/Tetris-PCB/tetris-pcb/digitalConverter.lib)(options "")(descr ""))
+  (lib (name tetris-pcb-rescue)(type Legacy)(uri ${KIPRJMOD}/tetris-pcb-rescue.lib)(options "")(descr ""))
+)

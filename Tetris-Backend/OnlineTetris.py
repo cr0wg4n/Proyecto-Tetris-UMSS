@@ -144,9 +144,12 @@ class TetrisApp(object):
 
 	def sendColorsString(self,stringColor):
 		try:
-			requests.get(nodeIP+stringColor)
-		except:
-			print('done!')
+			if(len(stringColor)==160):
+				requests.get(nodeIP+stringColor)
+			else:
+				print('string extra!')
+		except Exception as error:
+			print(error)
 
 	def serializeMatrix(self,matrix):
 		w = 10
@@ -264,6 +267,8 @@ class TetrisApp(object):
 			key_actions['DOWN']()
 		elif data['move'] == 1:
 			key_actions['UP']()
+		elif data['play'] == 1:
+			key_actions['p']()
 	
 	def unirMatrices(self, matrix, figura, posX, posY):        
 		respuesta = [ [ 0 for x in range(config['cols']) ]
