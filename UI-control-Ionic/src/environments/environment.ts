@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   urlServer: 'http://chameleoncodesoft.com:3000/',
-  urlLocal:'http://192.168.1.4:3000/',
+  urlLocal:'http://192.168.0.101:3000/',
   nodeUrl: 'http://192.168.0.100/'
 };
 

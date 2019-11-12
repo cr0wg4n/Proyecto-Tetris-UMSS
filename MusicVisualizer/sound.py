@@ -1,6 +1,5 @@
 import pyaudio
 import numpy as np
-import serial
 import requests
 from random import randint
 import time

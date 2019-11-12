@@ -269,6 +269,9 @@ class TetrisApp(object):
 			key_actions['UP']()
 		elif data['play'] == 1:
 			key_actions['p']()
+		elif data['reboot'] == 1:
+			key_actions['SPACE']()
+		
 	
 	def unirMatrices(self, matrix, figura, posX, posY):        
 		respuesta = [ [ 0 for x in range(config['cols']) ]

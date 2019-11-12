@@ -80,6 +80,15 @@ void loop() {
     case 's':
       leds[i]=CRGB::SkyBlue;
       break; 
+    case 'l':
+      leds[i]=CRGB::Silver;
+      break;
+    case 'i':
+      leds[i]=CRGB::SilverBlack;
+      break;
+    case 'w':
+      leds[i]=CRGB::White;
+      break;  
     default:
       leds[i]=CRGB::Black;
       break;
